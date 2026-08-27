@@ -14,17 +14,7 @@ uv run flet run --<options>
 
 ### 1. Regression Statistics
 These shall include the following:
-$$
-\begin{align}
-\tag{mean} \bar{u} &= \dfrac{1}{n}\displaystyle\sum_{i = 1}^{n}u_{i} \\
-\tag{ss} \texttt{SS}_{\mathbf{u}} &= \displaystyle\sum_{i = 1}^{n}(u_{i} - \bar{u})^{2} \\
-\tag{var} s_{\mathbf{u}}^{2} &= \dfrac{\texttt{SS}_{\mathbf{u}}}{n - 1} \\
-\tag{stdev} s_{\mathbf{u}} &= \sqrt{\dfrac{\texttt{SS}_{\mathbf{u}}}{n - 1}} \\
-\tag{cross-prod} \texttt{SS}_{\mathbf{uv}} &= \displaystyle\sum_{i = 1}^{n}(u_{i}-\bar{u})(v_{i} - \bar{v}) \\
-\tag{covar} \operatorname{Cov}(\mathbf{u},\mathbf{v}) &= \dfrac{\texttt{SS}_{\mathbf{uv}}}{n-1} \\
-\tag{corr} \operatorname{Cor}(\mathbf{u},\mathbf{v}) &= \dfrac{\operatorname{Cov}(\mathbf{u},\mathbf{v})}{s_{\mathbf{u}}\cdot s_{\mathbf{v}}}
-\end{align}
-$$
+$$\bar{u} = \dfrac{1}{n}\displaystyle\sum_{i = 1}^{n}u_{i}$$
 
 ### 2. Fitted Value and Estimators
 These shall include:
