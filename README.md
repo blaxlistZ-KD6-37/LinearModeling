@@ -24,9 +24,9 @@ These shall include the following:
 
 5. Sum of Cross Products: $$\texttt{SS}_{\mathbf{uv}} = \displaystyle\sum_{i = 1}^{n}(u_{i}-\bar{u})(v_{i} - \bar{v})$$
 
-6. Sample Covariance: $$\operatorname{Cov}(\mathbf{u},\mathbf{v}) = \dfrac{\texttt{SS}_{\mathbf{uv}}}{n-1}$$
+6. Sample Covariance: $$\textrm{Cov}(\mathbf{u},\mathbf{v}) = \dfrac{\texttt{SS}_{\mathbf{uv}}}{n-1}$$
 
-7. Sample Correlation: $$\operatorname{Cor}(\mathbf{u},\mathbf{v}) = \dfrac{\operatorname{Cov}(\mathbf{u},\mathbf{v})}{s_{\mathbf{u}}\cdot s_{\mathbf{v}}}$$
+7. Sample Correlation: $$\textrm{Cor}(\mathbf{u},\mathbf{v}) = \dfrac{\textrm{Cov}(\mathbf{u},\mathbf{v})}{s_{\mathbf{u}}\cdot s_{\mathbf{v}}}$$
 
 ### 2. Fitted Value and Estimators
 These shall include:
