@@ -1,69 +1,41 @@
-# Linearmodeling app
+# Simple Linear Regression Visualizer
 
-## Run the app
+## Running on uv
 
-### uv
-
-Run as a desktop app:
+Runing the source app:
 
 ```bash
-uv run flet run
+uv run flet run --<options>
 ```
+1. `web` - To run on the web.
+2. `android` - To run on the flet app.
 
-Run as a web app:
+## Upcoming Features
 
-```bash
-uv run flet run --web
-```
+### 1. Regression Statistics
+These shall include the following:
+$$
+\begin{align}
+\tag{mean} \bar{u} &= \dfrac{1}{n}\displaystyle\sum_{i = 1}^{n}u_{i} \\
+\tag{ss} \texttt{SS}_{\mathbf{u}} &= \displaystyle\sum_{i = 1}^{n}(u_{i} - \bar{u})^{2} \\
+\tag{var} s_{\mathbf{u}}^{2} &= \dfrac{\texttt{SS}_{\mathbf{u}}}{n - 1} \\
+\tag{stdev} s_{\mathbf{u}} &= \sqrt{\dfrac{\texttt{SS}_{\mathbf{u}}}{n - 1}} \\
+\tag{cross-prod} \texttt{SS}_{\mathbf{uv}} &= \displaystyle\sum_{i = 1}^{n}(u_{i}-\bar{u})(v_{i} - \bar{v}) \\
+\tag{covar} \operatorname{Cov}(\mathbf{u},\mathbf{v}) &= \dfrac{\texttt{SS}_{\mathbf{uv}}}{n-1} \\
+\tag{corr} \operatorname{Cor}(\mathbf{u},\mathbf{v}) &= \dfrac{\operatorname{Cov}(\mathbf{u},\mathbf{v})}{s_{\mathbf{u}}\cdot s_{\mathbf{v}}}
+\end{align}
+$$
 
-For more details on running the app, refer to the [Getting Started Guide](https://flet.dev/docs/).
+### 2. Fitted Value and Estimators
+These shall include:
+$$
+\begin{align}
+\tag{linear model}\hat{y} &= \hat{\beta}_{0} + \beta_{1}x \\
+\tag{intercept coef.} \hat{\beta}_{0} &= \bar{y} - \hat{\beta}_{1}\bar{x} \\
+\tag{slope est.} \hat{\beta_{1}} &= \dfrac{\texttt{SXY}}{\texttt{SXX}}
+\end{align}
+$$
 
-## Build the app
+### 3. Plot Visualizations
 
-### Android
-
-```bash
-flet build apk -v
-```
-
-For more details on building and signing `.apk` or `.aab`, refer to the [Android Packaging Guide](https://flet.dev/docs/publish/android/).
-
-### iOS
-
-```bash
-flet build ipa -v
-```
-
-For more details on building and signing `.ipa`, refer to the [iOS Packaging Guide](https://flet.dev/docs/publish/ios/).
-
-### macOS
-
-```bash
-flet build macos -v
-```
-
-For more details on building macOS package, refer to the [macOS Packaging Guide](https://flet.dev/docs/publish/macos/).
-
-### Linux
-
-```bash
-flet build linux -v
-```
-
-For more details on building Linux package, refer to the [Linux Packaging Guide](https://flet.dev/docs/publish/linux/).
-
-### Windows
-
-```bash
-flet build windows -v
-```
-
-For more details on building Windows package, refer to the [Windows Packaging Guide](https://flet.dev/docs/publish/windows/).
-
-### Web
-
-```bash
-flet build web -v
-```
-
-For more details on building Web app, refer to the [Web Packaging Guide](https://flet.dev/docs/publish/web/).
+### 4. Derivations
