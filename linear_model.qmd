@@ -1,0 +1,91 @@
+---
+title: "Simple Linear Regression"
+subtitle: "Statistics App"
+date: today
+date-format: "MMM. D, YYYY"
+format:
+  pdf:
+    toc: true
+    toc_depth: 3
+    number-sections: true
+    colorlinks: true
+    papersize: a4
+    fontsize: 12pt
+    geometry: margin=1in
+jupyter: python3
+header-includes:
+ - \usepackage{tikz}
+ - \usepackage{pgfplots}
+ - \usepackage[export]{adjustbox}
+ - \usepackage{wrapfig}
+ - \usepackage{amsmath}
+ - \usepackage{esint}
+ - \usepackage{amssymb}
+ - \usepackage[version=4]{mhchem}
+ - \usepackage{amsopn}
+ - \usepackage{graphicx}
+ - \usepackage{algorithmic}
+ - \usepackage{listings}
+ - \usepackage{lettrine}
+ - \usepackage{multirow}
+ - \usepackage{amsthm}
+ - \usepackage{subcaption}
+ - \usepackage{cancel}
+ - \usepackage{booktabs}
+ - \usepackage{array}
+ - \usepackage{multicol}
+ - \setlength{\columnsep}{1cm}
+ - \theoremstyle{plain}
+ - \newtheorem{thm}{Theorem}
+ - \newtheorem{defn}[thm]{Definition}
+ - \newtheorem{ex}[thm]{Example}
+ - \newtheorem{eqn}[thm]{Equation}
+ - \newtheorem{prop}[thm]{Proposition}
+ - \newtheorem{lemma}[thm]{Lemma}
+ - \newtheorem{theorem}[thm]{Theorem}
+ - \newtheorem{cor}[thm]{Corollary}
+ - \newtheorem{rem}[thm]{Remark}
+ - \newtheorem{alg}[thm]{Algorithm}
+ - \renewcommand\qedsymbol{$\blacksquare$}
+ - \DeclareMathOperator{\covar}{Cov}
+ - \DeclareMathOperator{\trace}{tr}
+ - \DeclareMathOperator{\stderr}{se}
+ - \DeclareMathOperator{\diag}{diag}
+ - \DeclareMathOperator{\med}{med}
+ - \DeclareMathOperator{\mean}{mean}
+ - \DeclareMathOperator{\sgn}{sgn}
+ - \DeclareMathOperator{\fl}{fl}
+ - \DeclareMathOperator{\rel}{Rel}
+ - \DeclareMathOperator{\reducematrixform}{REF}
+---
+
+\newpage
+
+# Sum of Squares
+
+$$
+\begin{align}
+  \texttt{SXX} &= \displaystyle\sum_{i = 1}^{n}x_{i}(x_{i} - \bar{x})
+\end{align}
+$$
+
+```{python}
+class OLS:
+    def __init__(self):
+        pass
+
+    def mean(self, x):
+        n = len(x)
+        value_mean = sum(i for i in range(n))
+        return (1 / n) * value_mean
+
+    def sumOfSquares(self, x):
+        value_mean = self.mean(x)
+        value_ss = sum(x[i] * (x[i] - value_mean) for i in range(len(x)))
+        return value_ss
+
+
+var = OLS()
+x_val = [1, 2, 3]
+var.sumOfSquares(x_val)
+```
