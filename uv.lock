@@ -583,6 +583,18 @@ wheels = [
 ]
 
 [[package]]
+name = "flet-math"
+version = "0.1.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "flet" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/e9/06/5b80fc36af58aacbae39da6f502211ef47754ded48be152eb7a1d6503485/flet_math-0.1.1.tar.gz", hash = "sha256:25def6a4cef8e917615fcf466ef16263cd30389a26199f4e98f75a69f3ec868c", size = 11616, upload-time = "2025-03-19T10:10:08.932Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b6/7e/1b216071c1d8c6e89486ed8692af68bdc2b5cf0f17780c30657b7df399ee/flet_math-0.1.1-py3-none-any.whl", hash = "sha256:c410f1a7dae77a13057cd1954e4a467a8e889232fa201261d8ff1b88685e9d93", size = 12856, upload-time = "2025-03-19T10:10:07.857Z" },
+]
+
+[[package]]
 name = "flet-web"
 version = "0.86.5"
 source = { registry = "https://pypi.org/simple" }
@@ -904,6 +916,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "flet" },
+    { name = "flet-math" },
 ]
 
 [package.dev-dependencies]
@@ -919,7 +932,11 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "flet", specifier = ">=0.86.5" }]
+requires-dist = [
+    { name = "flet", specifier = ">=0.86.5" },
+    { name = "flet-math" },
+    { name = "flet-math", specifier = ">=0.1.1" },
+]
 
 [package.metadata.requires-dev]
 dev = [
