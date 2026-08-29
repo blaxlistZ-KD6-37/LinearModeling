@@ -111,17 +111,17 @@ These shall include:
 \mathbf{t}_{\text{value}} = \dfrac{\pmb{\hat{\beta}}}{\mathrm{SE}\left(\pmb{\hat{\beta}}~\big|~X\right)}
 ```
 
-8. P-values:
+8. P-values (2-tailed):
 
 ```math
-\tag{2-tailed} \mathbf{p}_{\text{value}} = 2\left[1 - t_{\nu}\left(t_{\text{value}}^{\left(\hat{\beta}_{k}\right)}\right)\right],~k = 0,1
+\mathbf{p}_{\text{value}} = 2\left[1 - t_{\nu}\left(t_{\text{value}}^{\left(\hat{\beta}_{k}\right)}\right)\right],~k = 0,1
 ```
 
 9. Coefficient of Determinations:
 
 ```math
 \mathrm{R}^{2} = 1 - \dfrac{\texttt{RSS}}{\texttt{SS}_{\mathbf{y}}} \\
-\tag{Adjusted} \mathrm{R}_{\text{adj}}^{2} = 1 - \mathrm{R}^{2}\left(\dfrac{n-1}{n-2}\right)
+\mathrm{R}_{\text{adj}}^{2} = 1 - \mathrm{R}^{2}\left(\dfrac{n-1}{n-2}\right)
 ```
 
 ### 3. Plot Visualizations
