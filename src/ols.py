@@ -64,25 +64,25 @@ class RegressionStatistics:
         return residual_sum_of_squares
 
 
-class LinearModel(RegressionStatistics):
+class LinearModel:
     def __init__(self):
-        pass
+        self.__stats = RegressionStatistics()
 
     def estimateSlope(self, response, predictor):
-        sum_of_cross_products = self.sumOfCrossProducts(predictor, response)
-        sum_of_squares_predictor = self.sumOfSquares(predictor)
+        sum_of_cross_products = self.__stats.sumOfCrossProducts(predictor, response)
+        sum_of_squares_predictor = self.__stats.sumOfSquares(predictor)
         slope_estimate = sum_of_cross_products / sum_of_squares_predictor
         return slope_estimate
 
     def estimateIntercept(self, response, predictor):
-        mean_predictor = self.sampleMean(predictor)
-        mean_response = self.sampleMean(response)
+        mean_predictor = self.__stats.sampleMean(predictor)
+        mean_response = self.__stats.sampleMean(response)
         slope_estimate = self.estimateSlope(response, predictor)
         intercept_estimate = mean_response - slope_estimate * mean_predictor
         return intercept_estimate
 
     def commonVariance(self, response, predictor):
-        residual_sum_of_squares = self.residualSumOfSquares(response, predictor)
+        residual_sum_of_squares = self.__stats.residualSumOfSquares(response, predictor)
         degrees_of_freedom = len(response) - 2
         common_variance = residual_sum_of_squares / degrees_of_freedom
         return common_variance
@@ -94,9 +94,9 @@ class LinearModel(RegressionStatistics):
 
     def estimateVariance(self, response, predictor):
         response_count = len(response)
-        mean_predictor = self.sampleMean(predictor)
+        mean_predictor = self.__stats.sampleMean(predictor)
         common_variance = self.commonVariance(response, predictor)
-        sum_of_squares_predictor = self.sumOfSquares(predictor)
+        sum_of_squares_predictor = self.__stats.sumOfSquares(predictor)
         slope_variance_estimate = common_variance / sum_of_squares_predictor
         intercept_variance_estimate = slope_variance_estimate * (
             (sum_of_squares_predictor + response_count * mean_predictor**2)
@@ -123,8 +123,8 @@ class LinearModel(RegressionStatistics):
         return intercept_t_value, slope_t_value
 
     def regressionSumOfSquares(self, response, predictor):
-        response_sum_of_squares = self.sumOfSquares(response)
-        residual_sum_of_squares = self.residualSumOfSquares(response, predictor)
+        response_sum_of_squares = self.__stats.sumOfSquares(response)
+        residual_sum_of_squares = self.__stats.residualSumOfSquares(response, predictor)
         regression_sum_of_squares = response_sum_of_squares - residual_sum_of_squares
         return regression_sum_of_squares
 
@@ -145,8 +145,8 @@ class LinearModel(RegressionStatistics):
         return intercept_p_value, slope_p_value, regression_p_value
 
     def coefficientOfDetermination(self, response, predictor):
-        residual_sum_of_squares = self.residualSumOfSquares(response, predictor)
-        response_sum_of_squares = self.sumOfSquares(response)
+        residual_sum_of_squares = self.__stats.residualSumOfSquares(response, predictor)
+        response_sum_of_squares = self.__stats.sumOfSquares(response)
         coefficient_of_determination = (
             1 - residual_sum_of_squares / response_sum_of_squares
         )
@@ -154,8 +154,8 @@ class LinearModel(RegressionStatistics):
 
     def adjustedCoefficientofDetermination(self, response, predictor):
         response_count = len(response)
-        residual_sum_of_squares = self.residualSumOfSquares(response, predictor)
-        response_sum_of_squares = self.sumOfSquares(response)
+        residual_sum_of_squares = self.__stats.residualSumOfSquares(response, predictor)
+        response_sum_of_squares = self.__stats.sumOfSquares(response)
         adjusted_coefficient_of_determination = 1 - (
             residual_sum_of_squares / response_sum_of_squares
         ) * ((response_count - 1) / (response_count - 2))
