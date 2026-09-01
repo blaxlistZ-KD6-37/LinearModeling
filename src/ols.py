@@ -97,8 +97,8 @@ class LinearModel(RegressionStatistics):
         mean_predictor = self.sampleMean(predictor)
         common_variance = self.commonVariance(response, predictor)
         sum_of_squares_predictor = self.sumOfSquares(predictor)
-        intercept_variance_estimate = common_variance / sum_of_squares_predictor
-        slope_variance_estimate = intercept_variance_estimate * (
+        slope_variance_estimate = common_variance / sum_of_squares_predictor
+        intercept_variance_estimate = slope_variance_estimate * (
             (sum_of_squares_predictor + response_count * mean_predictor**2)
             / response_count
         )
@@ -135,7 +135,8 @@ class LinearModel(RegressionStatistics):
         return f_statistic
 
     def pValue(self, response, predictor):
-        degrees_of_freedom = len(response) - 2
+        response_count = len(response)
+        degrees_of_freedom = response_count - 2
         intercept_t_value, slope_t_value = self.tValue(response, predictor)
         f_statistic = self.fStatistic(response, predictor)
         intercept_p_value = 2 * (1 - t.cdf(abs(intercept_t_value), degrees_of_freedom))

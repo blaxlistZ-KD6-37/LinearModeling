@@ -102,7 +102,7 @@ These shall include:
 7. Variance Estimates:
 
 ```math
-\widehat{\mathrm{Var}}\left(\pmb{\hat{\beta}}~\big|~X\right) = \dfrac{\hat{\sigma}^{2}}{\texttt{SS}_{\mathbf{x}}}\begin{bmatrix}1 \\ \frac{\mathtt{SS}_{\mathbf{x}} + n\bar{x}^{2}}{n}\end{bmatrix}
+\widehat{\mathrm{Var}}\left(\pmb{\hat{\beta}}~\big|~X\right) = \dfrac{\hat{\sigma}^{2}}{\texttt{SS}_{\mathbf{x}}}\begin{bmatrix}\frac{\mathtt{SS}_{\mathbf{x}} + n\bar{x}^{2}}{n} \\ 1 \end{bmatrix}
 ```
 
 8. Standard Error:
@@ -118,6 +118,7 @@ These shall include:
 ```
 
 10. F-statistic:
+
 ```math
 F_{\text{stat}} = \dfrac{\texttt{SS}_{\text{reg}}}{\hat{\sigma}^{2}}
 ```

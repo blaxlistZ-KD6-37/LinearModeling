@@ -59,8 +59,8 @@ def main(page: ft.Page):
             ft.Markdown(
                 value=(
                     f"$p\\text{{-value}}_{{\\beta_{0}}} = {(p_val := lm.pValue(y, x))[0]}$\n"
-                    f"$p\\text{{-value}}_{{\\beta_{1}}} = {p_val[1]}\n$"
-                    f"$p\\text{{-value}}_{{\\text{{model}}}} = {p_val[2]}\n$"
+                    f"$p\\text{{-value}}_{{\\beta_{1}}} = {p_val[1]}$\n"
+                    f"$p\\text{{-value}}_{{\\text{{model}}}} = {p_val[2]}$\n"
                 ),
                 width=260,
                 selectable=True,
