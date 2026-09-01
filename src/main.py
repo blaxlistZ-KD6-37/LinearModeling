@@ -7,9 +7,14 @@ def main(page: ft.Page):
     page.title = "Simple Linear Regression"
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-    x = [1.2, 1.27, 1.35, 1.36, 1.16, 1.16, 1.22, 1.23, 1.27, 1.42]
-    y = [1.2, 1.4, 1.5, 1.6, 1.6, 1.7, 1.7, 1.7, 1.8, 1.8]
+    x = [1, 2, 3, 4, 5]
+    y = [2, 4, 6, 8, 10.01]
     lm = ols.LinearModel()
+    if lm.pValue(y, x)[2] > 0.005:
+        pval_cond = "Fail to Reject $H_{{0}}$"
+    else:
+        pval_cond = "Reject $H_{{0}}$"
+
     variable_container = ft.Column(
         width=ft.Window.width,
         height=ft.Window.height,
@@ -17,66 +22,24 @@ def main(page: ft.Page):
         controls=[
             ft.Markdown(
                 value=(f"$\\mathbf{{x}} = {x}^{{\\textsf{{T}}}}$"),
-                width=260,
+                width=ft.Window.width,
                 selectable=True,
             ),
             ft.Markdown(
                 value=(f"$\\mathbf{{y}} = {y}^{{\\textsf{{T}}}}$"),
-                width=260,
-                selectable=True,
-            ),
-            ft.Markdown(
-                value=(f"$\\beta_{{0}} = {lm.estimateIntercept(y, x)}$"),
-                width=260,
-                selectable=True,
-            ),
-            ft.Markdown(
-                value=(f"$\\beta_{{1}} = {lm.estimateSlope(y, x)}$"),
-                width=260,
-                selectable=True,
-            ),
-            ft.Markdown(
-                value=(f"$\\hat{{\\sigma}} = {lm.regressionStandardError(y, x)}$"),
-                width=260,
+                width=ft.Window.width,
                 selectable=True,
             ),
             ft.Markdown(
                 value=(
-                    f"$\\mathrm{{SE}}\\left(\\beta_{0}~|~X\\right) = {(se := lm.estimateStandardError(y, x))[0]}$\n"
-                    f"$\\mathrm{{SE}}\\left(\\beta_{{1}}~|~X\\right) = {se[1]}$"
+                    f"$\\hat{{y}} = {round(lm.estimateIntercept(y, x), 4)} + {round(lm.estimateSlope(y, x), 4)}x$\n\n"
+                    f"$\\text{{p-value}} = {round(lm.pValue(y, x)[2], 4)} \\implies \\text{{{pval_cond}}}$\n\n"
+                    f"$\\hat{{\\sigma}} = {round(lm.regressionStandardError(y, x), 4)}$\n\n"
+                    f"$\\mathrm{{R}}^{2} = {round(lm.coefficientOfDetermination(y, x), 40):2.2%}$".replace(
+                        "%", "\\%"
+                    )
                 ),
-                width=260,
-                selectable=True,
-            ),
-            ft.Markdown(
-                value=(
-                    f"$t\\text{{-value}}_{{\\beta_{0}}} = {(t_val := lm.tValue(y, x))[0]}$\n"
-                    f"$t\\text{{-value}}_{{\\beta_{1}}} = {t_val[1]}$"
-                ),
-                width=260,
-                selectable=True,
-            ),
-            ft.Markdown(
-                value=(
-                    f"$p\\text{{-value}}_{{\\beta_{0}}} = {(p_val := lm.pValue(y, x))[0]}$\n"
-                    f"$p\\text{{-value}}_{{\\beta_{1}}} = {p_val[1]}$\n"
-                    f"$p\\text{{-value}}_{{\\text{{model}}}} = {p_val[2]}$\n"
-                ),
-                width=260,
-                selectable=True,
-            ),
-            ft.Markdown(
-                value=(
-                    f"$\\mathrm{{R}}^{{2}} = {lm.coefficientOfDetermination(y, x)}$"
-                ),
-                width=260,
-                selectable=True,
-            ),
-            ft.Markdown(
-                value=(
-                    f"$\\mathrm{{R}}_{{\\text{{adj}}}}^{{2}} = {lm.adjustedCoefficientofDetermination(y, x)}$"
-                ),
-                width=260,
+                width=ft.Window.width,
                 selectable=True,
             ),
         ],
