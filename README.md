@@ -84,44 +84,62 @@ These shall include:
 4. Residual Sum of Squares:
 
 ```math
-\texttt{RSS} = \texttt{SS}_{\mathbf{y}} - \hat{\beta}_{1}^{2}\texttt{SS}_{\mathbf{x}}
+\texttt{SS}_{\mathbf{r}} = \texttt{SS}_{\mathbf{y}} - \hat{\beta}_{1}^{2}\texttt{SS}_{\mathbf{x}}
 ```
 
-4. Standard Error of Regression:
+5. Regression Sum of Squares:
 
 ```math
-\hat{\sigma} = \sqrt{\dfrac{\texttt{RSS}}{n-2}}
+\texttt{SS}_{\text{reg}} = \texttt{SS}_{\mathbf{y}} - \texttt{SS}_{\mathbf{r}}
 ```
 
-5. Variance Estimates:
+6. Standard Error of Regression:
+
+```math
+\hat{\sigma} = \sqrt{\dfrac{\texttt{SS}_{\mathbf{r}}}{n-2}}
+```
+
+7. Variance Estimates:
 
 ```math
 \widehat{\mathrm{Var}}\left(\pmb{\hat{\beta}}~\big|~X\right) = \dfrac{\hat{\sigma}^{2}}{\texttt{SS}_{\mathbf{x}}}\begin{bmatrix}1 \\ \frac{\mathtt{SS}_{\mathbf{x}} + n\bar{x}^{2}}{n}\end{bmatrix}
 ```
 
-6. Standard Error:
+8. Standard Error:
 
 ```math
 \mathrm{SE}\left(\pmb{\hat{\beta}}~\big|~X\right) = \sqrt{\widehat{\mathrm{Var}}\left(\pmb{\hat{\beta}}~\big|~X\right)}
 ```
 
-7. T-values:
+9. T-values:
 
 ```math
 \mathbf{t}_{\text{value}} = \dfrac{\pmb{\hat{\beta}}}{\mathrm{SE}\left(\pmb{\hat{\beta}}~\big|~X\right)}
 ```
 
-8. P-values (2-tailed):
-
+10. F-statistic:
 ```math
-\mathbf{p}_{\text{value}} = 2\left[1 - t_{\nu}\left(t_{\text{value}}^{\left(\hat{\beta}_{k}\right)}\right)\right],~k = 0,1
+F_{\text{stat}} = \dfrac{\texttt{SS}_{\text{reg}}}{\hat{\sigma}^{2}}
 ```
 
-9. Coefficient of Determinations:
+11. P-values (2-tailed):
 
 ```math
-\mathrm{R}^{2} = 1 - \dfrac{\texttt{RSS}}{\texttt{SS}_{\mathbf{y}}} \\
-\mathrm{R}_{\text{adj}}^{2} = 1 - \mathrm{R}^{2}\left(\dfrac{n-1}{n-2}\right)
+\mathbf{p}_{\text{value}} = 2\left[1 - t_{\nu}\left(t_{\text{value}}^{\left(\hat{\beta}_{k}\right)}, n - 2\right)\right],~k = 0,1\qquad\text{(For t-statistic)}
+```
+
+```math
+\text{p-value} = 1 - F(F_{\text{stat}}, 1, n - 2)\qquad\qquad\qquad\text{(For F-statistic)}
+```
+
+12. Coefficient of Determination:
+
+```math
+\mathrm{R}^{2} = 1 -  \dfrac{\texttt{SS}_{\mathbf{r}}}{\texttt{SS}_{\mathbf{y}}}
+```
+
+```math
+\mathrm{R}_{\text{adj}}^{2} = 1 - \dfrac{\texttt{SS}_{\mathbf{r}}}{\texttt{SS}_{\mathbf{y}}}\left(\dfrac{n-1}{n-2}\right)
 ```
 
 ### 3. Plot Visualizations
